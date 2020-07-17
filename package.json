@@ -5,7 +5,12 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
-    "server": "nodemon app.js"
+    "projfrontend": "npm run start --prefix projfrontend",
+    "server": "nodemon app.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run projfrontend\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix projfrontend && npm run build --prefix projfrontend"
+    
+    
   },
   "keywords": [],
   "author": "",
