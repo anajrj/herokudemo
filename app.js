@@ -20,12 +20,18 @@ const stripeRoutes= require('./routes/Stripepayment')
 
 // DATABASE CONNECTION 
 
-mongoose.connect(process.env.DATABASE, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true})
-.then(()=>{
-    console.log("DB RUNNING")
-}).catch(()=>{
-    console.log("DB NOT RUNNING")
-})
+// require('./database');
+
+mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
+    .then(() => console.log("Database Connected Successfully"))
+    .catch(err => console.log(err));
+
+// mongoose.connect(process.env.DATABASE, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true})
+// .then(()=>{
+//     console.log("DB RUNNING")
+// }).catch(()=>{
+//     console.log("DB NOT RUNNING")
+// })
 const port =process.env.PORT||8000
 // MIDDLEWARE
 app.use(cors())

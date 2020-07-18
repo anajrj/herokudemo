@@ -8,7 +8,8 @@
     "projfrontend": "npm run start --prefix projfrontend",
     "server": "nodemon app.js",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run projfrontend\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix projfrontend && npm run build --prefix projfrontend"
+    "heroku-postbuild": "cd projfrontend && npm install --only=dev && npm install && npm run build"
+    
     
     
   },
@@ -36,5 +37,8 @@
   "devDependencies": {
     "concurrently": "^5.2.0",
     "nodemon": "^1.19.4"
-  }
+  },
+  "engines": {
+    "node": "12.16.3"
+}
 }
